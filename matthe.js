@@ -129,7 +129,4 @@ client.on("guildMemberRemove", async member => {
     })
 });
 
-client
-    .login(config.token)
-    .then(() => console.log(`${client.user.username} Olarak Giriş Yapıldı JAHKY x MATTHE`))
-    .catch(() => console.log("Bot Giriş Yaparken Bir Sorun Oluştu"))
+client.login(config.token).then(() => console.log(`${client.user.username} Olarak Giriş Yapıldı JAHKY x MATTHE`)).catch(() => console.log("Bot Giriş Yaparken Bir Sorun Oluştu"))
