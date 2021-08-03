@@ -26,7 +26,7 @@ client.on('message', message => {
 })
 
 client.on("ready", () => {
-    client.user.setPresence({ activity: { name: "JAHKY x MATTHE" }, status: "dnd" });
+    client.user.setPresence({ activity: { name: "MATTHE YOUTUBE" }, status: "online" });
 });
 
 client.on("ready", () => {
@@ -76,7 +76,7 @@ client.on('guildMemberAdd', (member) => {
         var y;
         if (daveteden.id == member.guild.id) y = "Özel URL"
         else y = daveteden.user.tag
-        member.guild.channels.cache.get(config.logchannel).send(`\`📥\` ${member} sunucuya katıldı! Davet eden: ${y} (${davetsayi ? davetsayi : '0'} davet) \`✔️\``);
+        member.guild.channels.cache.get(config.logchannel).send(`${member} kullanıcısı sunucuya katıldı! **Davet Eden:** ${y} (${davetsayi ? davetsayi : '0'} davet )`);
     });
 });
 
@@ -109,24 +109,24 @@ client.on("guildMemberRemove", async member => {
         const davetsayi = await db.fetch(`davetsayi.${daveteden.id}.${member.guild.id}`);
         if (zaman < 1296000000) {
             if (!veri) {
-                return member.guild.channels.cache.get(config.logchannel).send(`\`📤\` \`${member.user.tag}\` çıktı. **Davet eden:** Bulunamadı \`❌\` `);
+                return member.guild.channels.cache.get(config.logchannel).send(`Sunucudan \`${member.user.tag}\` çıkış yaptı. **Davet eden:** Bulunamadı.`);
             } else if (daveteden.id == member.guild.id) {
-                member.guild.channels.cache.get(config.logchannel).send(`\`📤\` \`${member.user.tag}\`, sunucudan çıkış yaptı. **Davet eden:** ${y.tag}, ${davetsayi ? davetsayi : '0'} daveti kaldı \`❌\``);
+                member.guild.channels.cache.get(config.logchannel).send(`Sunucudan \`${member.user.tag}\`, çıkış yaptı. **Davet eden:** ${y.tag}, ${davetsayi ? davetsayi : '0'} daveti kaldı!`);
             } else {
-                member.guild.channels.cache.get(config.logchannel).send(`\`📤\` \`${member.user.tag}\`, sunucudan çıkış yaptı. **Davet eden:** ${y.tag}, ${davetsayi ? davetsayi : '0'} daveti kaldı \`❌\``);
+                member.guild.channels.cache.get(config.logchannel).send(`Sunucudan \`${member.user.tag}\`, çıkış yaptı. **Davet eden:** ${y.tag}, ${davetsayi ? davetsayi : '0'} daveti kaldı!`);
             }
         } else {
             {
                 if (!veri) {
                      member.guild.channels.get(config.logchannel).send(`\`📤\` \`${member.user.tag}\` çıktı, **Davet eden:** Bulunamadı \`❌\``);
                 } else if (daveteden.id == member.guild.id) {
-                    member.guild.channels.cache.get(config.logchannel).send(`\`📤\` \`${member.user.tag}\`, çıktı. **Davet eden:** ${y.tag}, ${davetsayi ? davetsayi : '0'} daveti kaldı \`❌\``);
+                    member.guild.channels.cache.get(config.logchannel).send(`Sunucudan \`${member.user.tag}\`, çıkış yaptı. **Davet eden:** ${y.tag}, ${davetsayi ? davetsayi : '0'} daveti kaldı!`);
                 } else {
-                    member.guild.channels.cache.get(config.logchannel).send(`\`📤\` \`${member.user.tag}\`, çıktı. **Davet eden:** ${y.tag}, ${davetsayi ? davetsayi : '0'} daveti kaldı \`❌\``);
+                    member.guild.channels.cache.get(config.logchannel).send(`Sunucudan \`${member.user.tag}\`, çıkış yaptı. **Davet eden:** ${y.tag}, ${davetsayi ? davetsayi : '0'} daveti kaldı!`);
                 }
             }
         }
     })
 });
 
-client.login(config.token).then(() => console.log(`${client.user.username} Olarak Giriş Yapıldı JAHKY x MATTHE`)).catch(() => console.log("Bot Giriş Yaparken Bir Sorun Oluştu"))
+client.login(process.env.token).then(() => console.log(`${client.user.username} Olarak Giriş Yapıldı JAHKY x MATTHE`)).catch(() => console.log("Bot Giriş Yaparken Bir Sorun Oluştu"))
