@@ -76,7 +76,7 @@ client.on('guildMemberAdd', (member) => {
         var y;
         if (daveteden.id == member.guild.id) y = "Özel URL"
         else y = daveteden.user.tag
-        member.guild.channels.cache.get(config.logchannel).send(`${member} kullanıcısı sunucuya katıldı! **Davet Eden:** ${y} (${davetsayi ? davetsayi : '0'} davet )`);
+        member.guild.channels.cache.get(config.logchannel).send(`${member} kullanıcısı sunucuya katıldı! **Davet Eden:** ${y} ( **${davetsayi ? davetsayi : '0'}** davet )`);
     });
 });
 
@@ -118,7 +118,7 @@ client.on("guildMemberRemove", async member => {
         } else {
             {
                 if (!veri) {
-                     member.guild.channels.get(config.logchannel).send(`\`📤\` \`${member.user.tag}\` çıktı, **Davet eden:** Bulunamadı \`❌\``);
+                     member.guild.channels.get(config.logchannel).send(`\`${member.user.tag}\` çıktı, **Davet eden:** Bulunamadı!`);
                 } else if (daveteden.id == member.guild.id) {
                     member.guild.channels.cache.get(config.logchannel).send(`Sunucudan \`${member.user.tag}\`, çıkış yaptı. **Davet eden:** ${y.tag}, ${davetsayi ? davetsayi : '0'} daveti kaldı!`);
                 } else {
